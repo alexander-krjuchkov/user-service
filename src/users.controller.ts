@@ -23,10 +23,9 @@ export class UsersController {
         return { success: true, result: { id } };
     }
 
-    @Get('get/')
-    async getAll(@Param('id') id: string, @Query('role') role: string) {
-        const numericId = this.validateAndConvertId(id);
-        const users = await this.usersService.find(numericId, role);
+    @Get('get')
+    async getAll(@Query('role') role: string) {
+        const users = await this.usersService.find(undefined, role);
         return { success: true, result: { users } };
     }
 
