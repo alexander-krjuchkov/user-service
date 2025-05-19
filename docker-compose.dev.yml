@@ -1,0 +1,16 @@
+services:
+  database:
+    image: mysql:9.3.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: dev-users
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - "3306:3306"
+
+  adminer:
+    image: adminer:5.2.1
+    environment:
+      ADMINER_DEFAULT_SERVER: database
+    ports:
+      - "8080:8080"
